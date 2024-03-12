@@ -163,11 +163,9 @@ require('lazy').setup({
       require('which-key').setup()
 
       require('which-key').register {
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+        -- ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>l'] = { name = '[L]SP', _ = 'which_key_ignore' },
       }
     end,
@@ -206,7 +204,9 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'ui-select')
 
       local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+      vim.keymap.set('n', '<C-p>', function()
+        builtin.git_files({ show_untracked = true })
+      end, {})
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sv', vim.cmd.Ex, { desc = 'back to [S]earch [V]iew' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
@@ -233,7 +233,6 @@ require('lazy').setup({
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP (the messages that appears bottom rigth)
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
@@ -279,9 +278,36 @@ require('lazy').setup({
 
         prettierd = {},
 
+        eslint_d = {},
+
+        eslint = {},
+
         emmet_language_server = {},
 
+        html = {},
+
         cssls = {},
+
+        -- volar = {
+        --   -- filetypes = { 'vue' },
+        --   filetypes = {
+        --     'typescript',
+        --     'javascript',
+        --     'javascriptreact',
+        --     'typescriptreact',
+        --     'vue',
+        --     'json'
+        --   },
+        --   settings = {
+        --     css = {
+        --       validate = true,  -- Enable CSS validation
+        --       lint = {
+        --         enabled = true, -- Enable CSS linting
+        --         debounce = 100, -- Debounce time for linting
+        --       },
+        --     },
+        --   },
+        -- },
 
         lua_ls = {
           settings = {
@@ -312,6 +338,7 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        automatic_installation = true,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -328,21 +355,11 @@ require('lazy').setup({
     'stevearc/conform.nvim',
     opts = {
       notify_on_error = false,
-      -- format_on_save = {
-      --   timeout_ms = 500,
-      --   lsp_fallback = true,
-      -- },
       formatters_by_ft = {
-        -- lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        javascript = { { 'prettierd', 'prettier' } },
-        javascriptreact = { { 'prettierd', 'prettier' } },
-        typescript = { { 'prettierd', 'prettier' } },
-        typescriptreact = { { 'prettierd', 'prettier' } },
+        javascript = { { 'prettierd', 'prettier', 'eslint_d', 'eslint' } },
+        javascriptreact = { { 'prettierd', 'prettier', 'eslint_d', 'eslint' } },
+        typescript = { { 'prettierd', 'prettier', 'eslint_d', 'eslint' } },
+        typescriptreact = { { 'prettierd', 'prettier', 'eslint_d', 'eslint' } },
       },
     },
   },
@@ -518,11 +535,17 @@ require('lazy').setup({
     main = 'ibl',
     opts = {},
   },
-
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true,
+    opts = {},
+  },
   -- Highlight, edit, and navigate code
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    dependencies = { "windwp/nvim-ts-autotag" },
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
@@ -535,14 +558,21 @@ require('lazy').setup({
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
+        autotag = {
+          enable = true,
+          enable_close_on_slash = true,
+        }
       }
     end,
   },
 
-  -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for kickstart
-  --
-  -- require 'kickstart.plugins.debug',
-
+  {
+    'tpope/vim-fugitive',
+    config = function()
+      vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = '[G]it [S]tatus' })
+      vim.keymap.set("n", "<leader>gb", "<cmd>G branch<CR>", { desc = '[G]it [B]ranch' })
+    end,
+  },
 }, {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
