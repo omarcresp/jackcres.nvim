@@ -403,7 +403,7 @@ require('lazy').setup({
           ['<C-y>'] = cmp.mapping.confirm { select = true },
           ['<C-Space>'] = cmp.mapping.complete {},
           -- NOTE: Pending to choice if this or copilot
-          ['<Tab>'] = cmp.mapping.confirm { select = true },
+          ['<Enter>'] = cmp.mapping.confirm { select = true },
 
           ['<C-l>'] = cmp.mapping(function()
             if luasnip.expand_or_locally_jumpable() then
@@ -564,6 +564,10 @@ require('lazy').setup({
         }
       }
     end,
+  },
+
+  {
+    'github/copilot.vim',
   },
 
   {
