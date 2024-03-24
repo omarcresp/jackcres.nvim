@@ -288,6 +288,8 @@ require('lazy').setup({
 
         cssls = {},
 
+        clangd = {},
+
         -- volar = {
         --   -- filetypes = { 'vue' },
         --   filetypes = {
