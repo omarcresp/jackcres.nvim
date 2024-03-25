@@ -68,10 +68,10 @@ vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+-- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+-- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+-- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+-- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Redo
 vim.keymap.set("n", "U", vim.cmd.redo)
@@ -139,7 +139,10 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',    opts = {} },
+  { 'numToStr/Comment.nvim',         opts = {} },
+
+  -- tmux nvim integration
+  { "christoomey/vim-tmux-navigator" },
 
   -- Adds git related signs
   {
@@ -575,7 +578,7 @@ require('lazy').setup({
   {
     'tpope/vim-fugitive',
     config = function()
-      vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = '[G]it [S]tatus' })
+      vim.keymap.set("n", "<leader>gg", vim.cmd.Git, { desc = '[G]it [S]tatus' })
       vim.keymap.set("n", "<leader>gb", "<cmd>G branch<CR>", { desc = '[G]it [B]ranch' })
     end,
   },
