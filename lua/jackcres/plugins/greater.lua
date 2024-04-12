@@ -47,7 +47,7 @@ return {
             desc = " Project Files",
             key = "p",
             key_format = " %s", -- remove default surrounding `[]`
-            action = "Explore"
+            action = "Oil"
           },
           {
             icon = " ",

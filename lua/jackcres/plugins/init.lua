@@ -14,7 +14,8 @@ return {
   -- Better UI for various things
   {
     "stevearc/dressing.nvim",
-    event = "VeryLazy",
+    event = "VimEnter",
+    opts = {},
   },
 
   -- "gc" to comment visual regions/lines

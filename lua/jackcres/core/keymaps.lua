@@ -48,7 +48,7 @@ vim.keymap.set("n", "<leader>sr", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
   { desc = '[S]earch and [R]eplace current word' })
 
 -- Go back to file tree
-vim.keymap.set("n", "<leader>sv", vim.cmd.Ex, { desc = "back to [S]earch [V]iew" })
+vim.keymap.set("n", "-", vim.cmd.Oil, { desc = "back to [S]earch [V]iew" })
 
 -- Make current file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = 'Marks E[X]ecutable current file' })
