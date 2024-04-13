@@ -5,28 +5,32 @@
 ## Pre-requisites
 
 - NeoVIM 0.9.0 or higher
-- NodeJS 16.0 or higher
+- NodeJS 16.0 or higher (optional)
 - build-essential (gcc, g++, make) or equivalent for your OS
   - macos: `xcode-select --install`
   - ubuntu: `sudo apt-get install build-essential`
+  - arch: `sudo pacman -S base-devel`
   - windows: WIP :)
 - NerdFonts (for icons -- optional)
   - [JetBrainsMono NerdFont](https://github.com/JetBrains/JetBrainsMono) (recommended)
   - [NerdFonts](https://www.nerdfonts.com/font-downloads)
 
-> **Note:** This configuration is still in development and may not work as expected. Please use at your own risk.
-> **Note:** If you dont install a NerdFont, then you'll need to set the g.have_nerd_font to false in the `lua/jackcres/core/options.lua` file.
+> **Note:** If you dont install a NerdFont, then you'll need to set the g.have_nerd_font to false in the `lua/custom/init.lua` file.
+
+> **Note:** This configuration is still in development and may not work as expected. Please use at your own risk and knowledge to workaround any issues that may arise. Feel free to open an issue if you find any bugs or have any suggestions.
 
 ## Installation
 
-1. Clone the repository to your `~/.config/nvim` folder
-2. Run `nvim` and wait for the plugins to install
-3. Close `nvim` and open it again
+1. Clone the configuration to your machine
+   1.a. Windows: `git clone https://github.com/omarcrespo/jackcres.nvim %USERPROFILE%\AppData\Local\nvim`
+   2.b. Macos|WSL|Linux: `git clone https://github.com/omarcrespo/jackcres.nvim ~/.config/nvim`
+2. Run `nvim` and wait for the plugins to install (it may take a while, first wait for lazy and then you can press :Mason to see the progress of the lsp)
+3. Close `nvim`
 4. Be a teapot (optional 😄)
 
 ### Next steps:
 
-- [ ] Complete document installation process in README (if you know you know, use it right now at your own risk 😄)
+- [x] Document installation process in README
 - [ ] Document the keybindings
 - [ ] Document the plugins
 - [ ] Make screenshots easier to use out of the box
