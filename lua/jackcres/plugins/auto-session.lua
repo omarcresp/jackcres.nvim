@@ -5,7 +5,7 @@ return {
         local map = vim.keymap
 
         autosession.setup({
-            -- TODO: Look into this if would be possible to use .folders file to suppress dirs
+            -- TODO: this should be configurable via vim.g or something
             auto_session_suppress_dirs = { "~", "/tmp" },
             auto_save_enabled = true,
             auto_restore_enabled = false,

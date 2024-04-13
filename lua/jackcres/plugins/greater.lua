@@ -16,7 +16,6 @@ return {
             config = {
                 disable_move = true,
                 -- TODO: Create and alternative that didnt require a NerdFont to be installed
-                -- TODO: Header showing the current project name or path
                 header = {
                     [[                                   ]],
                     [[   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ]],
@@ -33,7 +32,6 @@ return {
                     unpack(header_bottom),
                 },
                 center = {
-                    -- TODO: Add icons fallback for when NerdFont is not installed
                     {
                         icon = vim.g.have_nerd_font and " " or nil,
                         desc = " Find Files",

@@ -21,6 +21,7 @@ return {
             },
         })
 
+        -- FIX: tools installation is not working
         tool_installer.setup({
             ensure_installed = {
                 "prettier",

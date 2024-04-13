@@ -25,7 +25,6 @@ return {
         local cmp = require("cmp")
         local lspkind = require("lspkind")
 
-        -- NOTE: This is for manual
         local ls = require("luasnip")
         -- ls.config.setup {}
 
