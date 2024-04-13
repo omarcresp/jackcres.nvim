@@ -31,7 +31,7 @@ set.showmode = false
 
 -- Save undo history and disables backups (undo plugin will take care of)
 set.undofile = true
-set.undodir = os.getenv("HOME") .. "/.vim/undodir"
+set.undodir = vim.fn.stdpath("data") .. "/undotree"
 set.swapfile = false
 set.backup = false
 
