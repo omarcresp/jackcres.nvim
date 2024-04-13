@@ -14,15 +14,22 @@ return {
     },
     'saadparwaiz1/cmp_luasnip',
 
+    -- VSCode like pictograms for completion items
+    'onsails/lspkind-nvim',
+
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
+    'hrsh7th/cmp-emoji',
   },
   config = function()
     local cmp = require 'cmp'
-    local ls = require 'luasnip'
-    ls.config.setup {}
+    local lspkind = require 'lspkind'
 
-    require("luasnip.loaders.from_vscode").load({ paths = "./snippets" })
+    -- NOTE: This is for manual
+    local ls = require 'luasnip'
+    -- ls.config.setup {}
+
+    require("luasnip.loaders.from_vscode").lazy_load({ paths = "../snippets" })
 
     cmp.setup {
       snippet = {
@@ -30,7 +37,9 @@ return {
           ls.lsp_expand(args.body)
         end,
       },
-      completion = { completeopt = 'menu,menuone,noinsert' },
+
+      -- completion = { completeopt = 'menu,menuone,noinsert' },
+      completion = { completeopt = 'menu,menuone,preview,noselect' },
 
       mapping = cmp.mapping.preset.insert {
         ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -51,10 +60,25 @@ return {
           end
         end, { 'i', 's' }),
       },
+
       sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        { name = 'emoji' },
         { name = 'path' },
+      },
+      formatting = {
+        format = lspkind.cmp_format({
+          maxwidth = 50,
+          ellipsis_char = vim.g.have_nerd_font and '…' or '...',
+          menu = {
+            buffer = '[Buf]',
+            nvim_lsp = '[LSP]',
+            luasnip = '[Snip]',
+            emoji = '[Emoji]',
+            path = '[Path]',
+          },
+        }),
       },
     }
   end,

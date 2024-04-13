@@ -1,5 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
+
 local setTempl = {
   desc = "Set templ filetype",
   group = augroup("templ-filetype", { clear = true }),

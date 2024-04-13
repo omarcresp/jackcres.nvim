@@ -5,9 +5,9 @@ return {
     local folder_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
 
     local default_header_bottom = {
-      [[    JackCres NVIM configuration    ]],
+      "JackCode.nvim",
       folder_name,
-      [[                                   ]],
+      " ",
     }
     local header_bottom = vim.g.dashboard_custom_header_bottom or default_header_bottom
 
@@ -30,7 +30,6 @@ return {
           [[ ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄ ]],
           [[      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ]],
           [[       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ]],
-          [[                                   ]],
           unpack(header_bottom),
         },
         center = {
