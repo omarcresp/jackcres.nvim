@@ -1,8 +1,32 @@
 # JackCres NeoVIM Config
 
+## Pre-requisites
+
+- NeoVIM 0.9.0 or higher
+- NodeJS 16.0 or higher
+- build-essential (gcc, g++, make) or equivalent for your OS
+  - macos: `xcode-select --install`
+  - ubuntu: `sudo apt-get install build-essential`
+  - windows: WIP :)
+- NerdFonts (for icons -- optional)
+  - [JetBrainsMono NerdFont](https://github.com/JetBrains/JetBrainsMono) (recommended)
+  - [NerdFonts](https://www.nerdfonts.com/font-downloads)
+
+> **Note:** This configuration is still in development and may not work as expected. Please use at your own risk.
+> **Note:** If you dont install a NerdFont, then you'll need to set the g.have_nerd_font to false in the `lua/jackcres/core/options.lua` file.
+
+## Installation
+
+1. Clone the repository to your `~/.config/nvim` folder
+2. Run `nvim` and wait for the plugins to install
+3. Close `nvim` and open it again
+4. Be a teapot (optional 😄)
+
 ### Next steps:
 
-- [ ] Document installation process in README (if you know you know, use it right now 😄)
+- [ ] Complete document installation process in README (if you know you know, use it right now at your own risk 😄)
+- [ ] Document the keybindings
+- [ ] Document the plugins
 - [ ] Make screenshots easier to use out of the box
 - [ ] Configure quickfixlist navigations
 - [ ] Make LSP easier to configure with a global
