@@ -1,5 +1,7 @@
 # JackCres NeoVIM Config
 
+![image](https://github.com/omarcresp/jackcres.nvim/assets/27465620/5df0d4b9-7ab2-4eb8-a456-7b0023358bab)
+
 ## Pre-requisites
 
 - NeoVIM 0.9.0 or higher
