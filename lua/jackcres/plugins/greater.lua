@@ -11,6 +11,8 @@ return {
         }
         local header_bottom = vim.g.dashboard_custom_header_bottom or default_header_bottom
 
+        require("jackcres.utils.git_dir")
+
         require("dashboard").setup({
             theme = "doom",
             config = {
@@ -36,7 +38,7 @@ return {
                         desc = " Find Files",
                         key = "f",
                         key_format = " %s", -- remove default surrounding `[]`
-                        action = "Telescope git_files",
+                        action = IsGitDir() and "Telescope git_files" or "Telescope find_files",
                     },
                     {
                         icon = vim.g.have_nerd_font and " " or nil,

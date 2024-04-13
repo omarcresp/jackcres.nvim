@@ -41,12 +41,17 @@ return {
 
         pcall(require("telescope").load_extension, "fzf")
         pcall(require("telescope").load_extension, "ui-select")
+        require("jackcres.utils.git_dir")
 
         local builtin = require("telescope.builtin")
         local map = vim.keymap
 
         map.set("n", "<C-p>", function()
-            builtin.git_files({ show_untracked = true })
+            if IsGitDir() then
+                builtin.git_files({ show_untracked = true })
+            else
+                builtin.find_files()
+            end
         end, { desc = "Git [P]roject Files" })
         map.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
         map.set("n", "<leader>st", vim.cmd.TodoTelescope, { desc = "[S]earch [T]odos in project" })
