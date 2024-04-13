@@ -20,7 +20,7 @@ return {
                 local set = vim.keymap.set
 
                 opts.desc = "[G]o to [R]eferences"
-                set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+                set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
 
                 opts.desc = "[G]o to [D]eclaration"
                 set("n", "gD", vim.lsp.buf.declaration, opts)
