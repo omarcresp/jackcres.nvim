@@ -50,13 +50,12 @@ vim.g.leader = ' ' -- Default
 
 ### Next steps:
 
-- [x] Document installation process in README
 - [ ] Document the keybindings
 - [ ] Document the plugins
 - [ ] Make screenshots easier to use out of the box
 - [ ] Configure quickfixlist navigations
 - [ ] Make LSP easier to configure with a global
-- [ ] Setup `lua/custom` folder with inital variables
 - [ ] Move all personal lsp configurations to custom folder
-- [ ] Create an sh script to install the config from github releases
 - [ ] Create first open guide (hopefully interactive with UI) to setup
+- [x] Setup `lua/custom` folder with inital variables
+- [x] Document installation process in README

@@ -32,7 +32,7 @@ return {
                     i = {
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
-                        -- NOTE: investigate more abour quickfix list and how to jump over files
+                        -- NOTE: investigate more about quickfix list and how to jump over files
                         ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
                     },
                 },

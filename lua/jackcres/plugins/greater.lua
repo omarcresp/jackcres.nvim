@@ -15,7 +15,6 @@ return {
             theme = "doom",
             config = {
                 disable_move = true,
-                -- TODO: Create and alternative that didnt require a NerdFont to be installed
                 header = {
                     [[                                   ]],
                     [[   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ]],
