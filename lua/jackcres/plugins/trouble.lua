@@ -9,4 +9,7 @@ return {
         { "<leader>tl", "<cmd>TroubleToggle loclist<CR>", desc = "Open trouble location list" },
         { "<leader>tt", "<cmd>TodoTrouble<CR>", desc = "Open todos in trouble" },
     },
+    opts = {
+        icons = vim.g.have_nerd_font,
+    },
 }

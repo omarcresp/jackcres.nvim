@@ -35,21 +35,21 @@ return {
                 center = {
                     -- TODO: Add icons fallback for when NerdFont is not installed
                     {
-                        icon = " ",
+                        icon = vim.g.have_nerd_font and " " or nil,
                         desc = " Find Files",
                         key = "f",
                         key_format = " %s", -- remove default surrounding `[]`
                         action = "Telescope git_files",
                     },
                     {
-                        icon = " ",
+                        icon = vim.g.have_nerd_font and " " or nil,
                         desc = " Project Files",
                         key = "p",
                         key_format = " %s", -- remove default surrounding `[]`
                         action = "Oil",
                     },
                     {
-                        icon = " ",
+                        icon = vim.g.have_nerd_font and " " or nil,
                         desc = " Open Last Session",
                         key = "r",
                         key_format = " %s", -- remove default surrounding `[]`
