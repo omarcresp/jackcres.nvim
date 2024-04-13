@@ -15,7 +15,7 @@
   - [JetBrainsMono NerdFont](https://github.com/JetBrains/JetBrainsMono) (recommended)
   - [NerdFonts](https://www.nerdfonts.com/font-downloads)
 
-> **Note:** If you dont install a NerdFont, then you'll need to set the g.have_nerd_font to false in the `lua/custom/init.lua` file.
+> **Note:** If you dont install a NerdFont, read the [Customization](#customization) section to see how to disable the icons.
 
 > **Note:** This configuration is still in development and may not work as expected. Please use at your own risk and knowledge to workaround any issues that may arise. Feel free to open an issue if you find any bugs or have any suggestions.
 
@@ -27,6 +27,26 @@
 2. Run `nvim` and wait for the plugins to install (it may take a while, first wait for lazy and then you can press :Mason to see the progress of the lsp)
 3. Close `nvim`
 4. Be a teapot (optional 😄)
+
+## Customization
+
+Inside the `lua/custom` folder you can find the `init.lua` file. This file is meant to be used to customize the configuration to your liking. You can add any variables or configurations that you want to change from the default configuration.
+
+#### Nerdfonts
+
+If your terminal doesn't have a NerdFont, you can set the `g.have_nerd_font` variable to `false` in the custom file.
+
+```lua
+vim.g.have_nerd_font = true -- Default
+```
+
+#### Leader Key
+
+You can change the leader key by setting the `g.leader` variable in the custom file.
+
+```lua
+vim.g.leader = ' ' -- Default
+```
 
 ### Next steps:
 
