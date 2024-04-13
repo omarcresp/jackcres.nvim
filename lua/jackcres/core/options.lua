@@ -31,7 +31,7 @@ set.showmode = false
 
 -- Save undo history and disables backups (undo plugin will take care of)
 set.undofile = true
-set.undodir = os.getenv "HOME" .. "/.vim/undodir"
+set.undodir = os.getenv("HOME") .. "/.vim/undodir"
 set.swapfile = false
 set.backup = false
 
@@ -59,5 +59,3 @@ set.termguicolors = true
 -- Shows trailling blank spaces
 set.list = true
 set.listchars = { trail = "·", nbsp = "␣", tab = "  " }
-
-
