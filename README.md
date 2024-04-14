@@ -107,8 +107,8 @@ vim.g.dashboard_custom_header_bottom = {} -- Defaults to the JackCres text
 - [ ] Document the plugins
 - [ ] Make screenshots easier to use out of the box
 - [ ] Configure quickfixlist navigations
-- [ ] Make LSP easier to configure with a global
-- [ ] Move all personal lsp configurations to custom folder
 - [ ] Create first open guide (hopefully interactive with UI) to setup
+- [x] Make LSP easier to configure with a global
+- [x] Move all personal lsp configurations to custom folder
 - [x] Setup `lua/custom` folder with inital variables
 - [x] Document installation process in README
