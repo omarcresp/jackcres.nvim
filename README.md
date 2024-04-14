@@ -46,6 +46,15 @@ You can change the leader key by setting the `g.leader` variable in the custom f
 vim.g.leader = ' ' -- Default
 ```
 
+#### AutoSession supress dirs
+
+You can change the directories that AutoSession will ignore by setting the `g.session_suppress_dirs` variable in the custom file.
+It defaults to `~`. You can add any directory you want to ignore. But keep in mind to add the home directory so you didnt save sessions here
+
+```lua
+vim.g.session_suppress_dirs = { "~" } -- Default
+```
+
 ### Next steps:
 
 - [ ] Document the keybindings
