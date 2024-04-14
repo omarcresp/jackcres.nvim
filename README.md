@@ -5,7 +5,6 @@
 ## Pre-requisites
 
 - NeoVIM 0.9.0 or higher
-- NodeJS 16.0 or higher (optional)
 - build-essential (gcc, g++, make) or equivalent for your OS
   - macos: `xcode-select --install`
   - ubuntu: `sudo apt-get install build-essential`
@@ -22,8 +21,8 @@
 ## Installation
 
 1. Clone the configuration to your machine
-   1.a. Windows: `git clone https://github.com/omarcrespo/jackcres.nvim %USERPROFILE%\AppData\Local\nvim`
-   2.b. Macos|WSL|Linux: `git clone https://github.com/omarcrespo/jackcres.nvim ~/.config/nvim`
+   1. Windows: `git clone https://github.com/omarcrespo/jackcres.nvim %USERPROFILE%\AppData\Local\nvim`
+   2. Macos|WSL|Linux: `git clone https://github.com/omarcrespo/jackcres.nvim ~/.config/nvim`
 2. Run `nvim` and wait for the plugins to install (it may take a while, first wait for lazy and then you can press :Mason to see the progress of the lsp)
 3. Close `nvim`
 4. Be a teapot (optional 😄)
