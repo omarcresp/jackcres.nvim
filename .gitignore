@@ -1,2 +1,3 @@
 lazy-lock.json
 lua/custom/*.lua
+lua/custom/**/*

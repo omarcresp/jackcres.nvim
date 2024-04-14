@@ -1,19 +1,15 @@
 return {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
         "hrsh7th/cmp-nvim-lsp",
+        { "j-hui/fidget.nvim", opts = {} },
         { "antosha417/nvim-lsp-file-operations", config = true },
         { "folke/neodev.nvim", opts = {} },
     },
     config = function()
-        local lspconfig = require("lspconfig")
-        local mason_lspconfig = require("mason-lspconfig")
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
-        require("neodev").setup({})
-
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)
@@ -22,6 +18,10 @@ return {
 
                 opts.desc = "[G]o to [R]eferences"
                 set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+
+                opts.desc = "[G]o to [D]efinition"
+                set("n", "gd", vim.lsp.buf.definition, opts)
+                -- require('telescope.builtin').lsp_definitions
 
                 opts.desc = "[G]o to [D]eclaration"
                 set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -58,39 +58,46 @@ return {
             end,
         })
 
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-        -- TODO: make it work with a LUA table in a vim.g variable so it can be easily extended
-        mason_lspconfig.setup_handlers({
-            function(server_name)
-                lspconfig[server_name].setup({
-                    capabilities = capabilities,
-                })
-            end,
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities = vim.tbl_deep_extend("force", capabilities, cmp_nvim_lsp.default_capabilities())
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-            ["lua_ls"] = function()
-                lspconfig["lua_ls"].setup({
-                    capabilities = capabilities,
-                    settings = {
-                        Lua = {
-                            diagnostics = {
-                                globals = { "vim" },
-                            },
-                            runtime = { version = "LuaJIT" },
-                            workspace = {
-                                checkThirdParty = false,
-                                library = {
-                                    "${3rd}/luv/library",
-                                    unpack(vim.api.nvim_get_runtime_file("", true)),
-                                },
-                            },
-                            completion = {
-                                callSnippet = "Replace",
-                            },
-                        },
-                    },
-                })
-            end,
+        local servers = vim.g.lsp_servers or {}
+        local formatters = vim.g.formatters or {}
+
+        local function parse_formatters_into_servers()
+            local servers_and_formatters = vim.tbl_deep_extend("force", {}, servers)
+
+            function Aux(list)
+                for _, formatter in pairs(list) do
+                    if type(formatter) == "table" then
+                        Aux(formatter)
+                    elseif servers_and_formatters[formatter] == nil then
+                        servers_and_formatters[formatter] = {}
+                    end
+                end
+            end
+
+            Aux(formatters)
+
+            return vim.tbl_keys(servers_and_formatters)
+        end
+
+        local ensure_installed = parse_formatters_into_servers()
+
+        require("mason").setup()
+        require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+        require("mason-lspconfig").setup({
+            automatic_installation = true,
+            handlers = {
+                function(server_name)
+                    local server = servers[server_name] or {}
+                    server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+                    require("lspconfig")[server_name].setup(server)
+                end,
+            },
         })
     end,
 }

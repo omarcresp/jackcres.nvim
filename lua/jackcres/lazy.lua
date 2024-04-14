@@ -16,9 +16,16 @@ vim.opt.rtp:prepend(lazypath)
 vim.keymap.set("n", "<leader>rl", "<cmd>Lazy install<CR>", { desc = "[R]eload [L]azy plugins" })
 vim.keymap.set("n", "<leader>rp", ":Lazy reload ", { desc = "[R]eload [P]lugin" })
 
+local custom_plugins_path = vim.fn.stdpath("config") .. "/lua/custom/plugins/"
+local has_custom_plugins = vim.loop.fs_scandir(custom_plugins_path) and true or false
+
+if has_custom_plugins then
+    print("Custom plugins loaded")
+end
+
 require("lazy").setup({
     { import = "jackcres.plugins" },
-    { import = "jackcres.plugins.lsp" },
+    has_custom_plugins and { import = "custom.plugins" } or {},
 }, {
     ui = {
         icons = vim.g.have_nerd_font and {} or {

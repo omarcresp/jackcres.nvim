@@ -55,6 +55,20 @@ It defaults to `~`. You can add any directory you want to ignore. But keep in mi
 vim.g.session_suppress_dirs = { "~" } -- Default
 ```
 
+#### Dashboard
+
+You can change the dashboard to show a different image by setting the `g.dashboard_custom_header` variable in the custom file.
+
+```lua
+vim.g.dashboard_custom_header = {} -- Defaults to the Hydra text image, you can add any image you want
+```
+
+You can also change the text that appears in the bottom of the dashboard by setting the `g.dashboard_custom_header_bottom` variable in the custom file.
+
+```lua
+vim.g.dashboard_custom_header_bottom = {} -- Defaults to the JackCres text
+```
+
 ### Next steps:
 
 - [ ] Document the keybindings

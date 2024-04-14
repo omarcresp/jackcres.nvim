@@ -28,7 +28,7 @@ return {
         local ls = require("luasnip")
         -- ls.config.setup {}
 
-        require("luasnip.loaders.from_vscode").lazy_load({ paths = "../snippets" })
+        require("luasnip.loaders.from_vscode").lazy_load({ paths = "../../custom/snippets" })
 
         cmp.setup({
             snippet = {
@@ -71,7 +71,6 @@ return {
                     maxwidth = 50,
                     ellipsis_char = vim.g.have_nerd_font and "…" or "...",
                     menu = {
-                        buffer = "[Buf]",
                         nvim_lsp = "[LSP]",
                         luasnip = "[Snip]",
                         emoji = "[Emoji]",
