@@ -38,12 +38,44 @@ If your terminal doesn't have a NerdFont, you can set the `g.have_nerd_font` var
 vim.g.have_nerd_font = true -- Default
 ```
 
+#### Plugins
+
+You can add new plugins by creating a new file in the `lua/custom/plugins` folder. The file should return a table with the plugin configuration. You can find an example in the `lua/jackcres/plugins/telescope.lua` file.
+
 #### Leader Key
 
 You can change the leader key by setting the `g.leader` variable in the custom file.
 
 ```lua
 vim.g.leader = ' ' -- Default
+```
+
+#### Language Servers (LSP)
+
+If you need to configure a language server, you can add the configuration to the `g.lsp_servers` variable in the custom file. You can find an example in the `lua/jackcres/lsp/emmet.lua` file.
+
+```lua
+vim.g.lsp_servers = {
+    emmet_language_server = {
+        filetypes = { "html", "templ", "typescriptreact", "javascriptreact" },
+    },
+}
+```
+
+#### Formatters
+
+If you need to configure a formatter, you can add the configuration to the `g.formatters` variable in the custom file.
+
+```lua
+vim.g.formatters = {
+    lua = { "stylua" },
+}
+```
+
+You can also disable the format on save by setting the `g.format_on_save` variable to `false` in the custom file.
+
+```lua
+vim.g.format_on_save = true -- Default
 ```
 
 #### AutoSession supress dirs
