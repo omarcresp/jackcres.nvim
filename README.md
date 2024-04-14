@@ -72,10 +72,10 @@ vim.g.formatters = {
 }
 ```
 
-You can also disable the format on save by setting the `g.format_on_save` variable to `false` in the custom file.
+You can also enable the format on save by setting the `g.format_on_save` variable to `true` in the custom file.
 
 ```lua
-vim.g.format_on_save = true -- Default
+vim.g.format_on_save = false -- Default
 ```
 
 #### AutoSession supress dirs
