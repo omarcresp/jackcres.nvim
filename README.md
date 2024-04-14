@@ -21,8 +21,8 @@
 ## Installation
 
 1. Clone the configuration to your machine
-   1. Windows: `git clone https://github.com/omarcrespo/jackcres.nvim %USERPROFILE%\AppData\Local\nvim`
-   2. Macos|WSL|Linux: `git clone https://github.com/omarcrespo/jackcres.nvim ~/.config/nvim`
+   - Windows: `git clone https://github.com/omarcrespo/jackcres.nvim %USERPROFILE%\AppData\Local\nvim`
+   - Macos|WSL|Linux: `git clone https://github.com/omarcrespo/jackcres.nvim ~/.config/nvim`
 2. Run `nvim` and wait for the plugins to install (it may take a while, first wait for lazy and then you can press :Mason to see the progress of the lsp)
 3. Close `nvim`
 4. Be a teapot (optional 😄)
